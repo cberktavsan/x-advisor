@@ -18,6 +18,26 @@
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="assets/style-profile.png" width="600" alt="Style Profile — Radar chart and niche distribution" />
+</p>
+
+<p align="center">
+  <img src="assets/key-metrics.png" width="600" alt="Key Metrics and Detailed Breakdown" />
+</p>
+
+<p align="center">
+  <img src="assets/key-findings.png" width="600" alt="Key Findings — strengths, warnings, and critical issues" />
+</p>
+
+<p align="center">
+  <img src="assets/recommendations.png" width="600" alt="Algorithm-based Recommendations with impact labels" />
+</p>
+
+---
+
 ## What it does
 
 | Capability | Description |
