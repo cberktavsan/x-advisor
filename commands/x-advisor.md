@@ -39,7 +39,6 @@ ask_user_input_v0({
 ```
 
 **Steps where ask_user_input_v0 should be used:**
-- STEP -1: "Do you have an xquik account?" → single_select: Yes / No
 - STEP 2: Goal selection → single_select: 4 goals
 - STEP 3: Niche confirmation → single_select: Correct / Change
 - STEP 5: Action selection → single_select: 4 actions (max 4 option limit)
