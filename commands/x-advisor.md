@@ -97,13 +97,15 @@ Call `GET /api/v1/account` via the xquik tool.
 
 **FAILURE (tool not found or error) → show this EXACT text as your ONLY response, then STOP:**
 
-xquik is not connected. Please connect it first:
+xquik is not connected. To set up:
 
-**Customize** (left sidebar) → **X Algorithm Advisor** → **Connectors** → click **Install** next to xquik.
+1. Get a free API key at **xquik.com/register** → then **Dashboard → API Keys**
+2. Set the environment variable: `export XQUIK_API_KEY=xq_your_key_here`
+3. Restart Claude Desktop
+4. Go to **Customize → X Algorithm Advisor → Connectors → Install**
+5. Run /x-advisor again
 
-A login page will open automatically. Sign in or create a free account, authorize, then start a new chat and run /x-advisor again.
-
-That is ALL you say. Do not add anything else. Do not ask questions. Do not use ask_user_input_v0. STOP here.
+That is ALL you say. Do not add anything else. Do not ask questions. Do not use ask_user_input_v0. Do not ask the user to paste their key in chat. STOP here.
 
 ## STEP -0.5: LOAD USER PROFILE
 

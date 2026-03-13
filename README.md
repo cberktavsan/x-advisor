@@ -55,32 +55,35 @@ Everything is backed by real algorithm data from [X's open-source ranking algori
 
 ## Installation
 
-### Claude Desktop (OAuth — recommended)
+### 1. Get an API key
 
-1. Go to **Customize → Personal plugins → Add**
-2. Add the plugin from the local directory or marketplace
-3. Go to **Connectors** tab → click **Install** next to xquik
-4. You'll be redirected to xquik's authorization page
-5. Sign in (or create a free account) and authorize — done!
+1. Create a free account at [xquik.com/register](https://xquik.com/register)
+2. Go to **Dashboard → API Keys** → create a key
+3. Copy it (starts with `xq_`, shown once)
 
-No API key needed. xquik uses OAuth 2.1 + PKCE with [automatic discovery](https://xquik.com/.well-known/oauth-authorization-server).
+### 2. Set the environment variable
 
-### Claude Code (API key)
+```bash
+# macOS / Linux
+export XQUIK_API_KEY=xq_your_key_here
 
+# Add to your shell profile (~/.zshrc or ~/.bashrc) to persist:
+echo 'export XQUIK_API_KEY=xq_your_key_here' >> ~/.zshrc
+```
+
+### 3. Install the plugin
+
+**Claude Desktop:**
+Add the plugin, then go to **Customize → X Algorithm Advisor → Connectors → Install**. The plugin reads your `XQUIK_API_KEY` environment variable automatically. Requires [Node.js](https://nodejs.org) (for the mcp-remote bridge).
+
+**Claude Code:**
 ```bash
 claude plugin add github:cberktavsan/x-advisor
 ```
 
-Then connect xquik with your API key:
-```bash
-claude mcp add xquik --transport http --url https://xquik.com/mcp --header "x-api-key: YOUR_API_KEY"
-```
-
-Get your API key at [xquik.com/dashboard/api-keys](https://xquik.com/dashboard/api-keys).
-
 ### Free Tier
 
-You need a free [xquik](https://xquik.com/register) account. The free tier covers style analysis, tweet composition, scoring, and trends. An optional subscription unlocks tweet posting, engagement metrics, and profile data.
+The free tier covers style analysis, tweet composition, scoring, and trends. An optional subscription ($20/mo) unlocks tweet posting, engagement metrics, and profile data.
 
 ## Commands
 
