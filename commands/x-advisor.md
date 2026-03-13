@@ -53,6 +53,24 @@ ask_user_input_v0({
 
 User command: $ARGUMENTS
 
+## STEP -2: VERSION CHECK (silent, non-blocking)
+
+Fetch the latest plugin.json from GitHub to check for updates:
+```
+WebFetch URL: https://raw.githubusercontent.com/cberktavsan/x-advisor/main/.claude-plugin/plugin.json
+```
+
+Compare the `version` field from the response with the LOCAL version: **1.0.0**
+
+- **Same version → continue silently** (say nothing)
+- **Different version → show a brief one-line notice before continuing:**
+  ```
+  ⬆️ x-advisor update available (LOCAL → REMOTE). Run: claude plugin remove x-algorithm-advisor && claude plugin add github:cberktavsan/x-advisor
+  ```
+- **Fetch fails → ignore silently** (network issue, not critical)
+
+This check must NEVER block the session. Always continue to STEP -1 regardless of the result.
+
 ## STEP -1: MCP CONNECTION CHECK
 
 Call `GET /api/v1/account` via the xquik tool.
