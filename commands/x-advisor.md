@@ -39,6 +39,7 @@ ask_user_input_v0({
 ```
 
 **Steps where ask_user_input_v0 should be used:**
+- STEP -1: "Do you have an xquik account?" → single_select: Yes (connect) / No (sign up) — BOTH lead to OAuth link, NEVER ask for API keys
 - STEP 2: Goal selection → single_select: 4 goals
 - STEP 3: Niche confirmation → single_select: Correct / Change
 - STEP 5: Action selection → single_select: 4 actions (max 4 option limit)
@@ -84,20 +85,21 @@ Call `GET /api/v1/account` via the xquik tool.
 
 **SUCCESS → Go to STEP 0. Do NOT read the setup section below, SKIP and CONTINUE.**
 
-**FAILURE (tool not found or error) → show this EXACT message and STOP. Do NOT ask for API keys. Do NOT use ask_user_input_v0 here.**
+**FAILURE (tool not found or error) → use ask_user_input_v0:**
 
 ```
-xquik is not connected yet. To connect:
-
-1. Go to Customize (left sidebar)
-2. Click on "X Algorithm Advisor" under Personal plugins
-3. Go to the "Connectors" tab
-4. Click "Install" next to xquik
-5. Sign in or create a free account on the authorization page
-6. After authorizing, come back and run /x-advisor again.
+ask_user_input_v0({ questions: [{ type: "single_select", question: "xquik is not connected. Do you have an xquik account?", options: [
+  { value: "yes", label: "Yes, connect now", description: "I have an account, take me to authorize" },
+  { value: "no", label: "No, create one", description: "I need to sign up first" }
+]}]})
 ```
 
-After showing this message, STOP completely. Do not continue to any other step. Wait for the user to connect and try again.
+**BOTH options lead to the SAME action — show this message with a clickable link:**
+
+- "Yes" → "Click here to connect: https://xquik.com/oauth/authorize?redirect=claude — After authorizing, go to Customize → X Algorithm Advisor → Connectors → click Install. Then run /x-advisor again."
+- "No" → "Click here to sign up and connect: https://xquik.com/register?redirect=claude — After creating your account, go to Customize → X Algorithm Advisor → Connectors → click Install. Then run /x-advisor again."
+
+**IMPORTANT: Do NOT ask for API keys. Do NOT ask the user to paste anything. The link opens xquik's OAuth page directly. After showing the message, STOP completely.**
 
 ## STEP -0.5: LOAD USER PROFILE
 
