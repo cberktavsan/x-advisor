@@ -50,7 +50,6 @@ ask_user_input_v0({
 ```
 
 **Steps where ask_user_input_v0 should be used:**
-- STEP -1: "Do you have an xquik account?" → single_select: Yes (connect) / No (sign up) — BOTH lead to OAuth link, NEVER ask for API keys
 - STEP 2: Goal selection → single_select: 4 goals
 - STEP 3: Niche confirmation → single_select: Correct / Change
 - STEP 5: Action selection → single_select: 4 actions (max 4 option limit)
@@ -96,31 +95,15 @@ Call `GET /api/v1/account` via the xquik tool.
 
 **SUCCESS → Go to STEP 0. Do NOT read the setup section below, SKIP and CONTINUE.**
 
-**FAILURE (tool not found or error) → use ask_user_input_v0:**
+**FAILURE (tool not found or error) → show this EXACT text as your ONLY response, then STOP:**
 
-```
-ask_user_input_v0({ questions: [{ type: "single_select", question: "xquik is not connected. Do you have an xquik account?", options: [
-  { value: "yes", label: "Yes, connect now", description: "I have an account, take me to authorize" },
-  { value: "no", label: "No, create one", description: "I need to sign up first" }
-]}]})
-```
+xquik is not connected. Please connect it first:
 
-**BOTH options lead to the SAME instructions:**
+**Customize** (left sidebar) → **X Algorithm Advisor** → **Connectors** → click **Install** next to xquik.
 
-Whether "Yes" or "No", show this EXACT message:
+A login page will open automatically. Sign in or create a free account, authorize, then start a new chat and run /x-advisor again.
 
-```
-To connect xquik:
-
-1. Close this chat
-2. Go to Customize (left sidebar) → X Algorithm Advisor → Connectors
-3. Click the "Install" button next to xquik
-4. A login/signup page will open — sign in or create a free account
-5. Authorize the connection
-6. Start a new chat and run /x-advisor again
-```
-
-**IMPORTANT: Do NOT add any links. Do NOT ask for API keys. Do NOT ask the user to paste anything. Just show the steps above and STOP.**
+That is ALL you say. Do not add anything else. Do not ask questions. Do not use ask_user_input_v0. STOP here.
 
 ## STEP -0.5: LOAD USER PROFILE
 
