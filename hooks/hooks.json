@@ -1,0 +1,12 @@
+{
+  "SessionStart": [
+    {
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "Check if the xquik MCP server is available by attempting to call GET /api/v1/account. If it fails or the xquik tool is not found, briefly inform the user: 'xquik is not connected. Run /x-advisor to set it up.' Do not block the session."
+        }
+      ]
+    }
+  ]
+}

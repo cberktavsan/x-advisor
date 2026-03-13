@@ -1,0 +1,12 @@
+{
+  "name": "x-algorithm-advisor",
+  "version": "1.0.0",
+  "description": "X (Twitter) algorithm expert agent — analyzes your style, generates algorithm-optimized tweets, scores them, and posts with approval. Powered by xquik.",
+  "author": {
+    "name": "xquik",
+    "email": "support@xquik.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/xquik/x-advisor",
+  "keywords": ["twitter", "x", "algorithm", "tweets", "engagement", "xquik"]
+}
