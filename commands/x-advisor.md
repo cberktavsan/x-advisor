@@ -105,12 +105,22 @@ ask_user_input_v0({ questions: [{ type: "single_select", question: "xquik is not
 ]}]})
 ```
 
-**BOTH options lead to the SAME action — show this message with a clickable link:**
+**BOTH options lead to the SAME instructions:**
 
-- "Yes" → "Click here to connect: https://xquik.com/oauth/authorize?redirect=claude — After authorizing, go to Customize → X Algorithm Advisor → Connectors → click Install. Then run /x-advisor again."
-- "No" → "Click here to sign up and connect: https://xquik.com/register?redirect=claude — After creating your account, go to Customize → X Algorithm Advisor → Connectors → click Install. Then run /x-advisor again."
+Whether "Yes" or "No", show this EXACT message:
 
-**IMPORTANT: Do NOT ask for API keys. Do NOT ask the user to paste anything. The link opens xquik's OAuth page directly. After showing the message, STOP completely.**
+```
+To connect xquik:
+
+1. Close this chat
+2. Go to Customize (left sidebar) → X Algorithm Advisor → Connectors
+3. Click the "Install" button next to xquik
+4. A login/signup page will open — sign in or create a free account
+5. Authorize the connection
+6. Start a new chat and run /x-advisor again
+```
+
+**IMPORTANT: Do NOT add any links. Do NOT ask for API keys. Do NOT ask the user to paste anything. Just show the steps above and STOP.**
 
 ## STEP -0.5: LOAD USER PROFILE
 
