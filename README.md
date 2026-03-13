@@ -55,35 +55,32 @@ Everything is backed by real algorithm data from [X's open-source ranking algori
 
 ## Installation
 
-### 1. Get an API key
+### Claude Code
 
-1. Create a free account at [xquik.com/register](https://xquik.com/register)
-2. Go to **Dashboard → API Keys** → create a key
-3. Copy it (starts with `xq_`, shown once)
-
-### 2. Set the environment variable
-
-```bash
-# macOS / Linux
-export XQUIK_API_KEY=xq_your_key_here
-
-# Add to your shell profile (~/.zshrc or ~/.bashrc) to persist:
-echo 'export XQUIK_API_KEY=xq_your_key_here' >> ~/.zshrc
-```
-
-### 3. Install the plugin
-
-**Claude Desktop:**
-Add the plugin, then go to **Customize → X Algorithm Advisor → Connectors → Install**. The plugin reads your `XQUIK_API_KEY` environment variable automatically. Requires [Node.js](https://nodejs.org) (for the mcp-remote bridge).
-
-**Claude Code:**
 ```bash
 claude plugin add github:cberktavsan/x-advisor
 ```
 
+Then run `/x-advisor` — the plugin will guide you through connecting xquik automatically (opens your browser, you paste the API key, done).
+
+### Claude Desktop
+
+1. Add the plugin from the local directory or marketplace
+2. Run `/x-advisor` — the setup wizard handles everything
+
+### Manual MCP Setup (optional)
+
+If you prefer to set up xquik manually:
+
+```bash
+claude mcp add xquik --transport http --url https://xquik.com/mcp --header "x-api-key: YOUR_API_KEY"
+```
+
+Get your API key at [xquik.com/dashboard/api-keys](https://xquik.com/dashboard/api-keys) (free account at [xquik.com/register](https://xquik.com/register)).
+
 ### Free Tier
 
-The free tier covers style analysis, tweet composition, scoring, and trends. An optional subscription ($20/mo) unlocks tweet posting, engagement metrics, and profile data.
+The free tier covers style analysis, tweet composition, scoring, and trends. An optional subscription unlocks tweet posting, engagement metrics, and profile data.
 
 ## Commands
 

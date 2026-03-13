@@ -1,11 +1,6 @@
 {
   "xquik": {
-    "command": "npx",
-    "args": [
-      "mcp-remote@latest",
-      "https://xquik.com/mcp",
-      "--header",
-      "x-api-key:${XQUIK_API_KEY}"
-    ]
+    "type": "http",
+    "url": "https://xquik.com/mcp"
   }
 }
