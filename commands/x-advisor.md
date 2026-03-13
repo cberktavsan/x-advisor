@@ -62,14 +62,22 @@ WebFetch URL: https://raw.githubusercontent.com/cberktavsan/x-advisor/main/.clau
 
 Compare the `version` field from the response with the LOCAL version: **1.0.0**
 
-- **Same version → continue silently** (say nothing)
-- **Different version → show a brief one-line notice before continuing:**
+- **Same version → continue silently** (say nothing, go to STEP -1)
+- **Different version → ask the user with ask_user_input_v0:**
   ```
-  ⬆️ x-advisor update available (LOCAL → REMOTE). Run: claude plugin remove x-algorithm-advisor && claude plugin add github:cberktavsan/x-advisor
+  ask_user_input_v0({ questions: [{ type: "single_select", question: "x-advisor update available (LOCAL_VERSION → REMOTE_VERSION). Update now?", options: [
+    { value: "update", label: "Update now", description: "Downloads the latest version (takes a few seconds)" },
+    { value: "skip", label: "Skip", description: "Continue with current version" }
+  ]}]})
   ```
-- **Fetch fails → ignore silently** (network issue, not critical)
-
-This check must NEVER block the session. Always continue to STEP -1 regardless of the result.
+  - **"Update now"** → run these commands sequentially:
+    ```bash
+    claude plugin remove x-algorithm-advisor
+    claude plugin add github:cberktavsan/x-advisor
+    ```
+    Then say: "Updated to vX.X.X! Please restart the session for changes to take effect."
+  - **"Skip"** → continue to STEP -1 silently
+- **Fetch fails → ignore silently** (network issue, not critical, go to STEP -1)
 
 ## STEP -1: MCP CONNECTION CHECK
 
