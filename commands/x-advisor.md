@@ -85,38 +85,20 @@ Call `GET /api/v1/account` via the xquik tool.
 
 **SUCCESS → Go to STEP 0. Do NOT read the setup section below, SKIP and CONTINUE.**
 
-**FAILURE (tool not found or error) → start the setup flow:**
+**FAILURE (tool not found or error) → show this EXACT message and STOP. Do NOT ask for API keys. Do NOT use ask_user_input_v0 here.**
 
-xquik uses OAuth 2.1 + PKCE with automatic discovery via `/.well-known/oauth-authorization-server`. No API key copy-paste needed.
-
-**Claude Desktop users:**
-Show this message:
 ```
 xquik is not connected yet. To connect:
-1. Go to Customize → X Algorithm Advisor → Connectors
-2. Click "Install" next to xquik
-3. You'll be redirected to xquik's authorization page
-4. Sign in (or create a free account) and authorize
-5. Done! Come back and run /x-advisor again.
+
+1. Go to Customize (left sidebar)
+2. Click on "X Algorithm Advisor" under Personal plugins
+3. Go to the "Connectors" tab
+4. Click "Install" next to xquik
+5. Sign in or create a free account on the authorization page
+6. After authorizing, come back and run /x-advisor again.
 ```
 
-**Claude Code users:**
-Run this command directly (OAuth not supported in CLI — uses API key):
-```
-ask_user_input_v0({ questions: [{ type: "single_select", question: "How would you like to connect xquik?", options: [
-  { value: "apikey", label: "API key", description: "Paste your xquik API key (get one at xquik.com/dashboard/api-keys)" },
-  { value: "register", label: "I need an account", description: "Create a free account at xquik.com/register" }
-]}]})
-```
-- "API key" → Ask "Paste your API key (starts with xq_):" as plain text, then run:
-  ```bash
-  claude mcp add xquik --transport http --url https://xquik.com/mcp --header "x-api-key: USER_KEY"
-  ```
-- "I need an account" → Direct to https://xquik.com/register, then ask for API key
-
-**How to detect Claude Desktop vs Claude Code:**
-If `ask_user_input_v0` tool is available → Claude Desktop → show OAuth instructions.
-If not available → Claude Code → use API key flow.
+After showing this message, STOP completely. Do not continue to any other step. Wait for the user to connect and try again.
 
 ## STEP -0.5: LOAD USER PROFILE
 
