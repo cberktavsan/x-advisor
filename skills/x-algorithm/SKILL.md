@@ -1,31 +1,11 @@
 ---
 name: x-algorithm
 description: >
-  This skill MUST be activated when the user mentions ANY of the following topics or phrases:
-  "optimize my tweets", "analyze my X account", "improve engagement", "write a tweet",
-  "score my tweet", "X algorithm tips", "Twitter strategy", "grow followers",
-  "boost engagement", "tweet thread", "compose tweet", "draft tweet", "viral tweet",
-  "engagement rate", "X analytics", "tweet performance", "content strategy for X",
-  "tweet optimization", "algorithm hack", "Twitter growth", "tweet ideas",
-  "trending topics", "niche analysis", "writing style analysis", "compare accounts",
-  "tweet scoring", "post optimization", "social media strategy for X",
-  "thread creation", "hook writing".
-  Also activate when the user asks about X (formerly Twitter) algorithm mechanics,
-  tweet ranking signals, reply vs like value, golden hour strategy, link penalty avoidance,
-  hashtag effectiveness, tweet formatting best practices, how to get more retweets,
-  how to go viral on X, how to write better tweets, tweet drafting assistance,
-  X Premium benefits for reach, out-of-network distribution, For You feed optimization,
-  tweet engagement multipliers, conversation chain value, posting frequency,
-  daily tweet volume, content calendar for X, tweet scheduling strategy,
-  audience growth on Twitter, follower acquisition tactics, building authority on X,
-  personal branding on Twitter, tweet copywriting, social proof on X,
-  how the X algorithm works, tweet reach optimization, impression boosting,
-  profile visit optimization, video tweet strategy, media attachment best practices,
-  quote tweet strategy, or any request involving composing, scoring, posting,
-  analyzing, or optimizing content for the X/Twitter platform.
-  This skill provides deep X algorithm knowledge backed by 16 ranking rules
-  and real-time data from xquik MCP tools including style analysis, tweet composition,
-  scoring with visual gauges, trending topic radar, account comparison, and tweet posting.
+  Use when the user wants to optimize, write, score, or post tweets on X (Twitter),
+  analyze writing styles, grow followers, boost engagement, create threads,
+  view trends, or understand how the X algorithm ranks content.
+  Provides 16 algorithm rules, xquik MCP tools for style analysis, tweet composition,
+  scoring, trending topics, account comparison, and tweet posting.
 version: 1.0.0
 ---
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Outfit:wght@400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#f5f3f0; font-family:'Outfit',system-ui,sans-serif; color:#242121; padding:20px; }
+  .card { background:#fff; border:1px solid rgba(36,33,33,0.15); border-radius:10px; padding:24px; margin-bottom:16px; }
+  .card-title { font-family:'Instrument Serif',Georgia,serif; font-style:italic; color:#4c2626; font-size:1.3rem; margin-bottom:4px; }
+  .card-subtitle { color:#585455; font-size:13px; margin-bottom:20px; }
+  .breakdown-row { display:flex; align-items:center; padding:10px 0; border-bottom:1px solid rgba(36,33,33,0.06); }
+  .breakdown-row:last-child { border-bottom:none; }
+  .breakdown-label { flex:1; font-size:13px; color:#585455; }
+  .breakdown-bar { flex:2; margin:0 12px; background:#edebe7; border-radius:4px; height:6px; overflow:hidden; }
+  .breakdown-fill { height:100%; border-radius:4px; }
+  .breakdown-score { font-size:13px; font-weight:600; min-width:40px; text-align:right; }
+</style>
+</head>
+<body>
+
+<!-- GAUGE -->
+<div class="card" style="text-align:center">
+  <div class="card-title">Tweet Score</div>
+  <div class="card-subtitle">Algorithm evaluation</div>
+  <svg viewBox="0 0 200 130" style="max-width:220px;margin:0 auto;display:block">
+    <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="#edebe7" stroke-width="14" stroke-linecap="round"/>
+    <!-- SCORE_COLOR: #009588 for 70+, #fcbb00 for 40-69, #e40014 for 0-39 -->
+    <!-- FILLED = (score/100) × 251 -->
+    <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="SCORE_COLOR" stroke-width="14" stroke-linecap="round" stroke-dasharray="FILLED 251"/>
+    <text x="100" y="100" text-anchor="middle" fill="#242121" font-size="40" font-weight="700" font-family="Outfit,sans-serif">SCORE</text>
+    <text x="100" y="120" text-anchor="middle" fill="#585455" font-size="12" font-family="Outfit,sans-serif">/ 100</text>
+  </svg>
+  <!-- SCORE_LABEL: "Excellent!" / "Good, room to improve" / "Needs work" -->
+  <p style="color:#585455;font-size:14px;margin-top:12px">SCORE_LABEL</p>
+</div>
+
+<!-- BREAKDOWN -->
+<div class="card">
+  <div class="card-title">Detailed Breakdown</div>
+  <div class="card-subtitle">How your tweet scores across each dimension</div>
+  <!-- Repeat for each criterion. FILL_COLOR based on individual score: #009588 / #fcbb00 / #e40014 -->
+  <!-- FILL_WIDTH = (subscore/10) × 100 + "%" -->
+  <div class="breakdown-row">
+    <span class="breakdown-label">Reply Trigger</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">Hook Strength</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">Link Strategy</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">Hashtag Usage</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">Media Potential</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">Style Match</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">CTA Presence</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+  <div class="breakdown-row">
+    <span class="breakdown-label">Standalone Value</span>
+    <div class="breakdown-bar"><div class="breakdown-fill" style="width:FILL_WIDTH;background:FILL_COLOR"></div></div>
+    <span class="breakdown-score" style="color:FILL_COLOR">X/10</span>
+  </div>
+</div>
+
+</body>
+</html>

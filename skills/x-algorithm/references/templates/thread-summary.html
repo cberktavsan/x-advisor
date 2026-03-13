@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Outfit:wght@400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#f5f3f0; font-family:'Outfit',system-ui,sans-serif; color:#242121; padding:20px; }
+  .card { background:#fff; border:1px solid rgba(36,33,33,0.15); border-radius:10px; padding:24px; max-width:420px; margin:0 auto; }
+  .card-title { font-family:'Instrument Serif',Georgia,serif; font-style:italic; color:#4c2626; font-size:1.3rem; margin-bottom:16px; }
+  .tweet-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(36,33,33,0.06); }
+  .tweet-row:last-child { border-bottom:none; }
+  .tweet-label { font-size:13px; color:#585455; }
+  .tweet-score { font-size:15px; font-weight:600; }
+  .avg-row { display:flex; justify-content:space-between; align-items:center; padding:14px 0 0; margin-top:8px; border-top:2px solid rgba(36,33,33,0.15); }
+  .avg-label { font-size:15px; font-weight:600; color:#242121; }
+  .avg-score { font-size:1.4rem; font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-title">Thread Score Summary</div>
+  <!-- Repeat .tweet-row. SCORE_COLOR: #009588 (70+), #fcbb00 (40-69), #e40014 (0-39) -->
+  <div class="tweet-row">
+    <span class="tweet-label">Tweet 1 — Hook</span>
+    <span class="tweet-score" style="color:SCORE_COLOR">XX/100</span>
+  </div>
+  <div class="tweet-row">
+    <span class="tweet-label">Tweet 2</span>
+    <span class="tweet-score" style="color:SCORE_COLOR">XX/100</span>
+  </div>
+  <div class="tweet-row">
+    <span class="tweet-label">Tweet 3</span>
+    <span class="tweet-score" style="color:SCORE_COLOR">XX/100</span>
+  </div>
+  <div class="tweet-row">
+    <span class="tweet-label">Tweet 4 — CTA</span>
+    <span class="tweet-score" style="color:SCORE_COLOR">XX/100</span>
+  </div>
+  <div class="avg-row">
+    <span class="avg-label">Average</span>
+    <span class="avg-score" style="color:SCORE_COLOR">XX/100</span>
+  </div>
+</div>
+
+</body>
+</html>

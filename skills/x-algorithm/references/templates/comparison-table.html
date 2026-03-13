@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Outfit:wght@400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#f5f3f0; font-family:'Outfit',system-ui,sans-serif; color:#242121; padding:20px; }
+  .card { background:#fff; border:1px solid rgba(36,33,33,0.15); border-radius:10px; padding:24px; }
+  .card-title { font-family:'Instrument Serif',Georgia,serif; font-style:italic; color:#4c2626; font-size:1.3rem; margin-bottom:16px; }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; padding:10px 8px; font-size:12px; font-weight:500; color:#585455; text-transform:uppercase; letter-spacing:0.05em; border-bottom:2px solid rgba(36,33,33,0.15); }
+  th.u1 { text-align:center; color:#4c2626; }
+  th.u2 { text-align:center; color:#009588; }
+  td { padding:12px 8px; font-size:14px; border-bottom:1px solid rgba(36,33,33,0.06); }
+  td.val { text-align:center; font-weight:500; }
+  .winner { font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="card-title">Style Comparison</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th class="u1">@USER1</th>
+        <th class="u2">@USER2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Repeat rows. Add class="winner" to the higher value cell -->
+      <tr><td>Avg. Length</td><td class="val">VAL1</td><td class="val winner">VAL2</td></tr>
+      <tr><td>Question Ratio</td><td class="val winner">VAL1</td><td class="val">VAL2</td></tr>
+      <tr><td>CTA Ratio</td><td class="val">VAL1</td><td class="val">VAL2</td></tr>
+      <tr><td>Media Ratio</td><td class="val">VAL1</td><td class="val">VAL2</td></tr>
+      <tr><td>Emoji Usage</td><td class="val">VAL1</td><td class="val">VAL2</td></tr>
+      <tr><td>Primary Tone</td><td class="val">VAL1</td><td class="val">VAL2</td></tr>
+      <tr><td>Engagement Score</td><td class="val">VAL1</td><td class="val winner">VAL2</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
