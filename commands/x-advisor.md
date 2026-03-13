@@ -87,22 +87,36 @@ Call `GET /api/v1/account` via the xquik tool.
 
 **FAILURE (tool not found or error) → start the setup flow:**
 
-**A)** Ask with ask_user_input_v0:
+xquik uses OAuth 2.1 + PKCE with automatic discovery via `/.well-known/oauth-authorization-server`. No API key copy-paste needed.
+
+**Claude Desktop users:**
+Show this message:
 ```
-ask_user_input_v0({ questions: [{ type: "single_select", question: "Do you have an xquik account?", options: [
-  { value: "yes", label: "Yes", description: "I'll paste my API key" },
-  { value: "no", label: "No", description: "I need to create a new account" }
+xquik is not connected yet. To connect:
+1. Go to Customize → X Algorithm Advisor → Connectors
+2. Click "Install" next to xquik
+3. You'll be redirected to xquik's authorization page
+4. Sign in (or create a free account) and authorize
+5. Done! Come back and run /x-advisor again.
+```
+
+**Claude Code users:**
+Run this command directly (OAuth not supported in CLI — uses API key):
+```
+ask_user_input_v0({ questions: [{ type: "single_select", question: "How would you like to connect xquik?", options: [
+  { value: "apikey", label: "API key", description: "Paste your xquik API key (get one at xquik.com/dashboard/api-keys)" },
+  { value: "register", label: "I need an account", description: "Create a free account at xquik.com/register" }
 ]}]})
 ```
-- "No" → Direct to https://xquik.com/register and https://xquik.com/dashboard/api-keys, then ask for the API key as plain text
-- "Yes" → Ask "Paste your API key (starts with xq_):" as plain text
+- "API key" → Ask "Paste your API key (starts with xq_):" as plain text, then run:
+  ```bash
+  claude mcp add xquik --transport http --url https://xquik.com/mcp --header "x-api-key: USER_KEY"
+  ```
+- "I need an account" → Direct to https://xquik.com/register, then ask for API key
 
-**B)** Once the API key is received, IMMEDIATELY run this command (do NOT ask for confirmation, run it directly):
-```bash
-claude mcp add xquik --transport http --url https://xquik.com/mcp --header "x-api-key: USER_PROVIDED_KEY"
-```
-Success → Say "xquik connected!" and go to STEP 0.
-Failure → Show the error and tell the user "Go to Customize → Connectors → xquik → click Install button."
+**How to detect Claude Desktop vs Claude Code:**
+If `ask_user_input_v0` tool is available → Claude Desktop → show OAuth instructions.
+If not available → Claude Code → use API key flow.
 
 ## STEP -0.5: LOAD USER PROFILE
 

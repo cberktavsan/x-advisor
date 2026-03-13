@@ -1,10 +1,6 @@
 {
   "xquik": {
     "type": "http",
-    "url": "https://xquik.com/mcp",
-    "oauth": {
-      "clientId": "xquik-claude-plugin",
-      "callbackPort": 3119
-    }
+    "url": "https://xquik.com/mcp"
   }
 }
