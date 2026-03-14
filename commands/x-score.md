@@ -20,11 +20,31 @@ Use the `ask_user_input_v0` tool for all multiple-choice questions. NEVER write 
 
 ## Flow
 
-### STEP 1: Receive Tweet Text
+### STEP 1: Determine Input Type
 
-Take the tweet text from `$ARGUMENTS`.
+Take `$ARGUMENTS` and determine what the user provided:
 
-If `$ARGUMENTS` is empty, ask the user: "Paste the tweet you'd like me to score:" as plain text (open-ended).
+**A) Tweet text** (the input looks like actual tweet content) → go to STEP 2 with this text.
+
+**B) A username or account reference** (e.g. "score @someone's tweets", "my tweets", "score my last 5 tweets", "@username son 10 tweet") → This is a FETCH request, not a score request:
+1. Read the user profile from `.claude/x-algorithm-advisor.local.md` to determine the user's own username
+2. If the user says "my/benim" → use their saved username. If they specify another username → use that one.
+3. Fetch tweets: `POST /api/v1/styles { username }` to get the tweet list
+4. Filter out replies (tweets starting with @)
+5. Score EACH tweet individually with `POST /api/v1/compose { step: "score", draft }`
+6. Show all scores in a ranked list using the **Tweet Score artifact** template
+
+**C) Empty** → use ask_user_input_v0:
+```
+ask_user_input_v0({ questions: [{ type: "single_select", question: "What would you like to score?", options: [
+  { value: "paste", label: "Paste a tweet", description: "I'll paste the tweet text to score" },
+  { value: "my", label: "My recent tweets", description: "Score my latest tweets from X" },
+  { value: "other", label: "Another account's tweets", description: "I'll provide a username" }
+]}]})
+```
+- "Paste a tweet" → ask "Paste the tweet:" as plain text
+- "My recent tweets" → load username from saved profile, fetch and score
+- "Another account's tweets" → ask "Which username?" as plain text, then fetch and score
 
 ### STEP 2: Score the Tweet
 
