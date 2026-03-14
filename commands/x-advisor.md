@@ -39,7 +39,6 @@ ask_user_input_v0({
 ```
 
 **Steps where ask_user_input_v0 should be used:**
-- STEP -1: "Do you have an xquik account?" → single_select: Yes / No
 - STEP 2: Goal selection → single_select: 4 goals
 - STEP 3: Niche confirmation → single_select: Correct / Change
 - STEP 5: Action selection → single_select: 4 actions (max 4 option limit)
@@ -85,34 +84,15 @@ Call `GET /api/v1/account` via the xquik tool.
 
 **SUCCESS → Go to STEP 0. Do NOT read the setup section below, SKIP and CONTINUE.**
 
-**FAILURE (tool not found or error) → start the setup flow:**
+**FAILURE (tool not found or error) → tell user to connect via Connectors:**
 
-**A)** Ask with ask_user_input_v0:
-```
-ask_user_input_v0({ questions: [{ type: "single_select", question: "xquik is not connected. Do you have an xquik account?", options: [
-  { value: "yes", label: "Yes, I have an account", description: "I'll get my API key from the dashboard" },
-  { value: "no", label: "No, I need one", description: "I'll create a free account now" }
-]}]})
-```
+Show this message:
 
-**B)** BOTH choices → open the xquik site in the browser:
-- "Yes" → open https://xquik.com/dashboard/api-keys in browser
-- "No" → open https://xquik.com/register in browser
+"xquik is not connected. Go to **Customize → X Algorithm Advisor → Connectors** and click **Install** next to xquik. This will open a login page in your browser — sign in or create a free account, authorize the connection, then run /x-advisor again."
 
-To open the URL, run:
-```bash
-open "https://xquik.com/dashboard/api-keys"
-```
-(or `open "https://xquik.com/register"` for new accounts)
+The Install button triggers OAuth 2.1 automatically — xquik's MCP server supports discovery via `/.well-known/oauth-authorization-server`. No API key needed.
 
-Then say: "I've opened xquik in your browser. Copy your API key (starts with xq_) and paste it here:"
-
-**C)** Once the user pastes the API key, IMMEDIATELY add it to MCP:
-```bash
-claude mcp add xquik --transport http --url https://xquik.com/mcp --header "x-api-key: USER_PROVIDED_KEY"
-```
-Success → "xquik connected! Starting the advisor..." and go to STEP 0.
-Failure → Show the error message.
+After showing the message, STOP. Do not continue.
 
 ## STEP -0.5: LOAD USER PROFILE
 
