@@ -113,6 +113,8 @@ Read file: .claude/x-algorithm-advisor.local.md
 **If the file does NOT exist:**
 - Proceed with the full wizard (STEP 0 → STEP 5)
 
+**CRITICAL:** The saved profile is the user's OWN account. When the user asks to analyze or score a DIFFERENT account (e.g. "score @burakbayir"), ALWAYS use the username they specified. NEVER substitute the saved profile username.
+
 ## SAVING THE PROFILE
 
 After completing STEP 4 (analysis report), ALWAYS save/update the user profile. Use the Write tool to create `.claude/x-algorithm-advisor.local.md` with the format documented in `skills/x-algorithm/references/user-profile.md`. This ensures the next session can skip re-analysis.

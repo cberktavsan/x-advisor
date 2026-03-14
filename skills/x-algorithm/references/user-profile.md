@@ -80,6 +80,14 @@ Don't re-analyze every time. Only re-analyze when:
 
 When re-analyzing, update the existing file — don't create a new one.
 
+## CRITICAL: Own Profile vs Target User
+
+The saved profile is the USER'S OWN account. When the user asks to analyze, score, or compare a DIFFERENT account:
+- ALWAYS use the username the user specified, NOT the saved profile username
+- The saved `username` field = the user's own account (for style matching when generating tweets)
+- If user says "score @burakbayir's tweets" → call API with `burakbayir`, NOT the saved username
+- The saved profile is ONLY used for: style matching, tone reference, niche context when writing tweets FOR the user
+
 ## Profile Usage Across Commands
 
 | Command | Reads Profile | Updates Profile |
